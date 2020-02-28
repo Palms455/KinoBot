@@ -9,12 +9,12 @@ def get_html(url):
 	return r.text
 
 
-def get_site_list(html):
+def get_site_list(html, x):
 	movies = {}
 	soup = BeautifulSoup(html, 'lxml')
 	items = soup.find('div', class_='td-page-content').find_all('table')
 	date = items[0].find('strong').text
-	for i in items[2:15:2]:
+	for i in items[2:x:2]:
 		for j in i.find_all('tr')[1:]:
 			movie = j.find('a').text
 			time = j.find('td').text
@@ -25,8 +25,8 @@ def get_site_list(html):
 				movies[movie].append(time)
 	return [date, movies]
 
-def data(url):
-	return get_site_list(get_html(url))
+def data(url, x):
+	return get_site_list(get_html(url), x)
 
 
 def main():

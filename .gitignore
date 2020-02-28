@@ -8,6 +8,8 @@ __pycache__/
 
 # Distribution / packaging
 .Python
+.new_token
+.tbot_env/
 build/
 develop-eggs/
 dist/
